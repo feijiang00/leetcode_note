@@ -45,6 +45,9 @@
 
 package leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 两数之和
  * @author feijiang00
@@ -54,6 +57,11 @@ class P1_TwoSum{
 	 public static void main(String[] args) {
 	 	 //测试代码
 	 	 Solution solution = new P1_TwoSum().new Solution();
+	 	 int nums[] = {2,7,11,15};
+	 	 int params[] = new int[2];
+	 	 params = solution.twoSum(nums,9);
+	 	 System.out.println(params[0] + "  " + params[1]);
+
 	 }
 	 
 //力扣代码
@@ -63,16 +71,57 @@ class Solution {
 		int parms[] = new int[2];
 		int len = nums.length;
 		//直接暴力
-		for(int i=0;i<len;i++)
-			for(int j=i+1;j<len;j++){
-				if(nums[i] + nums[j] == target){
-					parms[0] = i;
-					parms[1] = j;
-					return parms;
-				}
+//		for(int i=0;i<len;i++)
+//			for(int j=i+1;j<len;j++){
+//				if(nums[i] + nums[j] == target){
+//					parms[0] = i;
+//					parms[1] = j;
+//					return parms;
+//				}
+//			}
+//		return null;
+
+		//比on2小的，思路优化，之前查找就是循环找，没有用算法查找，经典的二分查找等等，
+		//这里，用hasmap中的查找。为什么？
+		//HashMap的底层主要是基于数组和链表实现的，它之所以有相当快的查询速度主要是因为它是通过计算散列码来决定存储位置的。
+		//对吧，这不就很舒服嘛
+
+		/**
+		 * v1.0
+		 * 这里我犯了一个错误，就是没设置谁是key，谁是value，hashmap最重要就是查找，而且只能根据key
+		 * 查找出value，使用get这个方法，那么这里就需要给数值设置成key，下标为value
+		 */
+//		Map<Integer, Integer> map = new HashMap<>();
+//		map.put(0,nums[0]);//k-v
+//		for(int i=1;i<len;i++){
+//			int value = target - nums[i];
+//			if(map.containsValue(value)){
+//				parms[0] = i;
+//				parms[1] = map.get(value);
+//				return parms;
+//			}
+//			map.put(i,nums[i]);
+//		}
+//		return null;
+
+		/**
+		 * v2.0
+		 */
+		Map<Integer,Integer> map = new HashMap<>();
+		map.put(nums[0],0);
+		for(int i=1;i<len;i++){
+			int value = target - nums[i];
+			if(map.containsKey(value)){
+				parms[0] = i;
+				parms[1] = map.get(value);
+				return parms;
 			}
+			map.put(nums[i],i);
+		}
+
+
 		return null;
-    }
+	}
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
