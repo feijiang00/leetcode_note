@@ -22,20 +22,19 @@ public class Q24_反转链表 {
         public ListNode reverseList(ListNode head) {
             /*
             反转链表，构造一个新链表即可，送分
-            不用栈，直接尾插法试试
+            不用栈，直接头插法试试
              */
-            ListNode node = new ListNode();
-            node.next = null;
+            ListNode node = null;
             if (head == null)
                 return null;
             while (head != null) {
                 ListNode tmp = new ListNode();
                 tmp.val = head.val;
-                tmp.next = node.next;
-                node.next = tmp;
+                tmp.next = node;
+                node = tmp;
                 head = head.next;
             }
-            return node.next;
+            return node;
         }
     }
 }
