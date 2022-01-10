@@ -115,7 +115,7 @@ class Solution1 {
 			return 1;
 		if(s.equals(""))
 			return 0;
-		Set<Character> set = new HashSet();
+		Set<Character> set = new HashSet<>();
 		int len = s.length();
 		int i,j;
 		int max = 0;
