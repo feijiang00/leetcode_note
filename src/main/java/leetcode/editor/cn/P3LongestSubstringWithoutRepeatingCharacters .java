@@ -59,7 +59,7 @@ class P3_LongestSubstringWithoutRepeatingCharacters{
 	 public static void main(String[] args) {
 	 	 //测试代码
 	 	 Solution solution = new P3_LongestSubstringWithoutRepeatingCharacters().new Solution();
-	 	 int max = solution.lengthOfLongestSubstring("dvdf");
+	 	 int max = solution.lengthOfLongestSubstring("pwwkew");
 	 	 System.out.println(max);
 	 }
 //力扣代码
