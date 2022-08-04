@@ -10,6 +10,7 @@ public class Q5194_得到目标值的最少行动次数 {
     public static void main(String[] args) {
         Solution solution = new Solution();
         solution.minMoves(5,0);
+
     }
 
 
